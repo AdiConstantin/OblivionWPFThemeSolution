@@ -71,6 +71,18 @@
                 Value="5" />
         <Setter Property="Margin"
                 Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6">
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- COMBOBOX -->
@@ -89,6 +101,63 @@
                 Value="5" />
         <Setter Property="Margin"
                 Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6" />
+                        <ToggleButton Grid.Column="2"
+                                      x:Name="ToggleButton"
+                                      Focusable="False"
+                                      IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Stretch">
+                            <Path Data="M 0 0 L 8 0 L 4 4 Z"
+                                  Fill="{DynamicResource AccentBrush}"
+                                  Width="8"
+                                  Height="4"
+                                  Margin="0,0,8,0"
+                                  VerticalAlignment="Center" />
+                        </ToggleButton>
+                        <ContentPresenter Margin="8,0,28,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          Content="{TemplateBinding SelectionBoxItem}" />
+                        <Popup x:Name="PART_Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                            <Border Background="{DynamicResource SurfaceBrush}"
+                                    BorderBrush="{DynamicResource PrimaryBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    SnapsToDevicePixels="True">
+                                <ScrollViewer>
+                                    <ItemsPresenter />
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="Border"
+                                    Property="Opacity"
+                                    Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- CHECKBOX -->
@@ -99,6 +168,43 @@
                 Value="{DynamicResource TextBrush}" />
         <Setter Property="Margin"
                 Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="18"
+                                Height="18"
+                                CornerRadius="4"
+                                BorderBrush="{DynamicResource AccentBrush}"
+                                BorderThickness="2"
+                                Background="{DynamicResource SurfaceBrush}"
+                                Margin="0,0,6,0">
+                            <Path x:Name="CheckMark"
+                                  Data="M 4 9 L 8 13 L 14 5"
+                                  Stroke="{DynamicResource AccentBrush}"
+                                  StrokeThickness="2"
+                                  StrokeEndLineCap="Round"
+                                  StrokeStartLineCap="Round"
+                                  Visibility="Collapsed" />
+                        </Border>
+                        <ContentPresenter VerticalAlignment="Center" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter TargetName="CheckMark"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Opacity"
+                                    Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- RADIOBUTTON -->
@@ -109,6 +215,43 @@
                 Value="{DynamicResource TextBrush}" />
         <Setter Property="Margin"
                 Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="18"
+                                Height="18"
+                                CornerRadius="9"
+                                BorderBrush="{DynamicResource AccentBrush}"
+                                BorderThickness="2"
+                                Background="{DynamicResource SurfaceBrush}"
+                                Margin="0,0,6,0">
+                            <Ellipse x:Name="Dot"
+                                     Width="10"
+                                     Height="10"
+                                     Fill="{DynamicResource AccentBrush}"
+                                     Visibility="Collapsed"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center" />
+                        </Border>
+                        <ContentPresenter VerticalAlignment="Center" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter TargetName="Dot"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Opacity"
+                                    Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- DATAGRID -->
@@ -127,6 +270,107 @@
                 Value="{DynamicResource SurfaceBrush}" />
         <Setter Property="AlternatingRowBackground"
                 Value="{DynamicResource BackgroundBrush}" />
+        <!--<Setter Property="SelectionBrush"
+                Value="{DynamicResource AccentBrush}" />
+        <Setter Property="SelectionForeground"
+                Value="{DynamicResource PrimaryBrush}" />-->
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="GridLinesVisibility"
+                Value="Horizontal" />
+        <Setter Property="HorizontalGridLinesBrush"
+                Value="{DynamicResource AccentBrush}" />
+        <Setter Property="VerticalGridLinesBrush"
+                Value="{DynamicResource SurfaceBrush}" />
+        <Setter Property="RowHeaderWidth"
+                Value="0" />
+        <Setter Property="CellStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness"
+                            Value="0,0,0,1" />
+                    <Setter Property="BorderBrush"
+                            Value="{DynamicResource AccentBrush}" />
+                    <Setter Property="Padding"
+                            Value="6,2" />
+                    <Setter Property="Background"
+                            Value="Transparent" />
+                    <Setter Property="Foreground"
+                            Value="{DynamicResource TextBrush}" />
+                    <Setter Property="FontFamily"
+                            Value="{DynamicResource SciFiFont}" />
+                    <Setter Property="FontSize"
+                            Value="14" />
+                    <Setter Property="SnapsToDevicePixels"
+                            Value="True" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="4">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      Margin="4,0,4,0" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="{DynamicResource AccentBrush}" />
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource PrimaryBrush}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ColumnHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background"
+                            Value="{DynamicResource SurfaceBrush}" />
+                    <Setter Property="Foreground"
+                            Value="{DynamicResource PrimaryBrush}" />
+                    <Setter Property="FontFamily"
+                            Value="{DynamicResource SciFiFont}" />
+                    <Setter Property="FontWeight"
+                            Value="Bold" />
+                    <Setter Property="FontSize"
+                            Value="15" />
+                    <Setter Property="BorderBrush"
+                            Value="{DynamicResource AccentBrush}" />
+                    <Setter Property="BorderThickness"
+                            Value="0,0,0,2" />
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Center" />
+                    <Setter Property="VerticalContentAlignment"
+                            Value="Center" />
+                    <Setter Property="Padding"
+                            Value="8,4" />
+                    <Setter Property="SnapsToDevicePixels"
+                            Value="True" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridColumnHeader">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="6,6,0,0">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"
+                                                      Margin="0" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- SLIDER -->

@@ -167,8 +167,11 @@
                     </ListBox>
                 </TabItem>
                 <TabItem Header="Details">
-                    <DataGrid AutoGenerateColumns="True"
-                              Height="200" />
+                    <DataGrid x:Name="MyDataGrid"
+                              AutoGenerateColumns="True"
+                              Margin="0"
+                              VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch" />
                 </TabItem>
             </TabControl>
         </Grid>
