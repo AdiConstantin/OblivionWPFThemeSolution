@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36212.18 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OblivionThemeWPF", "OblivionThemeWPF.csproj", "{5136917F-E8F7-4E33-BFA5-9A92802B3846}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OblivionTheme", "..\OblivionTheme\OblivionTheme.csproj", "{F3714F94-3A7D-46DE-A532-B77813CFF59A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5136917F-E8F7-4E33-BFA5-9A92802B3846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5136917F-E8F7-4E33-BFA5-9A92802B3846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5136917F-E8F7-4E33-BFA5-9A92802B3846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5136917F-E8F7-4E33-BFA5-9A92802B3846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3714F94-3A7D-46DE-A532-B77813CFF59A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3714F94-3A7D-46DE-A532-B77813CFF59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3714F94-3A7D-46DE-A532-B77813CFF59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3714F94-3A7D-46DE-A532-B77813CFF59A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A78CD206-26C6-4E3D-B257-873EC552E730}
+	EndGlobalSection
+EndGlobal
