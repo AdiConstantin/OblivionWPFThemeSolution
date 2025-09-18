@@ -141,7 +141,7 @@
                        HorizontalAlignment="Center"
                        TextAlignment="Center">
                 © 2025 Adi Constantin  |
-                <Hyperlink NavigateUri="adrianconstantin.ro"
+                <Hyperlink NavigateUri="https://adrianconstantin.ro"
                            RequestNavigate="Hyperlink_RequestNavigate"
                            Foreground="{DynamicResource PrimaryBrush}">
                     Website
@@ -151,7 +151,7 @@
                            Foreground="{DynamicResource PrimaryBrush}">
                     LinkedIn
                 </Hyperlink>  |  
-                <Hyperlink NavigateUri="https://github.com/AdiConstantin/OblivionWPFTheme"
+                <Hyperlink NavigateUri="https://github.com/AdiConstantin/OblivionWPFThemeSolution"
                            RequestNavigate="Hyperlink_RequestNavigate"
                            Foreground="{DynamicResource PrimaryBrush}">
                     GitHub Project
