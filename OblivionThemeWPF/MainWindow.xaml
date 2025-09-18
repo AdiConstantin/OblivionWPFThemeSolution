@@ -1,179 +1,473 @@
 ﻿<Window x:Class="OblivionThemeWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Oblivion Dashboard"
-        Height="600"
-        Width="1000"
+        Title="Oblivion Control Center - Futuristic WPF Theme Demo"
+        Height="800"
+        Width="1200"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Background="{DynamicResource BackgroundBrush}">
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource TextBrush}">
+    
+    <Window.Resources>
+        <!-- Sample data for ComboBox -->
+        <x:Array x:Key="StatusOptions" Type="sys:String" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+            <sys:String>Online</sys:String>
+            <sys:String>Offline</sys:String>
+            <sys:String>Maintenance</sys:String>
+            <sys:String>Error</sys:String>
+        </x:Array>
+    </Window.Resources>
+    
     <DockPanel>
         <!-- Navigation Sidebar -->
-        <StackPanel DockPanel.Dock="Left"
-                    Width="200"
-                    Background="{DynamicResource SurfaceBrush}">
-            <TextBlock Text="NAVIGATION"
-                       FontSize="14"
-                       FontWeight="Bold"
-                       Margin="10"
-                       Foreground="{DynamicResource PrimaryBrush}" />
-            <Button Content="Dashboard"
-                    Margin="10 5" />
-            <Button Content="Reports"
-                    Margin="10 5" />
-            <Button Content="Settings"
-                    Margin="10 5" />
-
-            <StackPanel VerticalAlignment="Bottom"
-                        Margin="10,20,10,10">
-                <TextBlock Text="Support the Project"
-                           FontWeight="Bold"
-                           Foreground="{DynamicResource PrimaryBrush}"
-                           Margin="0,0,0,8" />
-                <StackPanel>
+        <Border DockPanel.Dock="Left"
+                Width="250"
+                Background="{DynamicResource SurfaceGradientBrush}"
+                BorderBrush="{DynamicResource PrimaryBrush}"
+                BorderThickness="0,0,1,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="16">
+                    <!-- Header -->
+                    <TextBlock Text="OBLIVION SYSTEM"
+                               Style="{DynamicResource HeaderTextStyle}"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,20" />
+                    
+                    <!-- Navigation Section -->
+                    <TextBlock Text="NAVIGATION"
+                               Style="{DynamicResource SubHeaderTextStyle}"
+                               Margin="0,0,0,12" />
+                    
+                    <Button Content="⚡ Dashboard" Margin="0,4" HorizontalAlignment="Stretch" />
+                    <Button Content="📊 Analytics" Margin="0,4" HorizontalAlignment="Stretch" />
+                    <Button Content="🔧 Settings" Margin="0,4" HorizontalAlignment="Stretch" />
+                    <Button Content="🌐 Network" Margin="0,4" HorizontalAlignment="Stretch" />
+                    <Button Content="🔒 Security" Margin="0,4" HorizontalAlignment="Stretch" />
+                    
+                    <!-- System Status -->
+                    <TextBlock Text="SYSTEM STATUS"
+                               Style="{DynamicResource SubHeaderTextStyle}"
+                               Margin="0,24,0,12" />
+                    
+                    <ListBox Height="120" Margin="0,4">
+                        <ListBoxItem Content="🟢 Core Systems: Online" />
+                        <ListBoxItem Content="🟡 Communications: Limited" />
+                        <ListBoxItem Content="🟢 Power Grid: Optimal" />
+                        <ListBoxItem Content="🔴 Backup Systems: Offline" IsSelected="True" />
+                    </ListBox>
+                    
+                    <!-- System Controls -->
+                    <TextBlock Text="QUICK CONTROLS"
+                               Style="{DynamicResource SubHeaderTextStyle}"
+                               Margin="0,24,0,12" />
+                    
+                    <StackPanel>
+                        <CheckBox Content="Auto-Sync Enabled" IsChecked="True" Margin="0,4" />
+                        <CheckBox Content="Silent Mode" IsChecked="False" Margin="0,4" />
+                        <CheckBox Content="Emergency Protocol" IsChecked="False" Margin="0,4" />
+                    </StackPanel>
+                    
+                    <StackPanel Margin="0,16,0,0">
+                        <RadioButton Content="Mode: Standard" IsChecked="True" GroupName="Mode" Margin="0,4" />
+                        <RadioButton Content="Mode: Enhanced" IsChecked="False" GroupName="Mode" Margin="0,4" />
+                        <RadioButton Content="Mode: Emergency" IsChecked="False" GroupName="Mode" Margin="0,4" />
+                    </StackPanel>
+                    
+                    <!-- Support Section -->
+                    <TextBlock Text="SUPPORT PROJECT"
+                               Style="{DynamicResource SubHeaderTextStyle}"
+                               Margin="0,32,0,12" />
+                    
                     <Button Content="☕ Buy Me a Coffee"
                             Tag="https://coff.ee/constantinadi"
                             Click="PaymentButton_Click"
-                            Margin="0,2" />
+                            Margin="0,4" />
+                    
                     <Button Content="💖 Symbolic Donation"
                             Tag="https://www.paypal.com/donate/?hosted_button_id=YOUR_SYMBOLIC_ID"
                             Click="PaymentButton_Click"
-                            Margin="0,2"
+                            Margin="0,4"
                             IsEnabled="False"
-                            ToolTipService.ShowOnDisabled="True">
-                        <Button.ToolTip>
-                            <StackPanel>
-                                <TextBlock Text="Symbolic Donation - Not yet Implemented"
-                                           FontWeight="Bold"
-                                           Foreground="{DynamicResource PrimaryBrush}" />
-                                <TextBlock Text="Support the project with a symbolic donation is deferred because there are some issues with PayPal account. Thank you for understanding!"
-                                           TextWrapping="Wrap"
-                                           Foreground="{DynamicResource TextBrush}" />
-                            </StackPanel>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Content="💳 Standard Donation"
-                            Tag="https://www.paypal.com/donate/?hosted_button_id=YOUR_STANDARD_ID"
-                            Click="PaymentButton_Click"
-                            Margin="0,2"
-                            IsEnabled="False"
-                            ToolTipService.ShowOnDisabled="True">
-                        <Button.ToolTip>
-                            <StackPanel>
-                                <TextBlock Text="Standard Donation - Not yet Implemented"
-                                           FontWeight="Bold"
-                                           Foreground="{DynamicResource PrimaryBrush}" />
-                                <TextBlock Text="Support the project with a standard donation is deferred because there are some issues with PayPal account. Thank you for understanding!"
-                                           TextWrapping="Wrap"
-                                           Foreground="{DynamicResource TextBrush}" />
-                            </StackPanel>
-                        </Button.ToolTip>
-                    </Button>
-                    <Button Content="🚀 Serious Supporter"
-                            Tag="https://www.paypal.com/donate/?hosted_button_id=YOUR_SERIOUS_ID"
-                            Click="PaymentButton_Click"
-                            Margin="0,2"
-                            IsEnabled="False"
-                            ToolTipService.ShowOnDisabled="True">
-                        <Button.ToolTip>
-                            <StackPanel>
-                                <TextBlock Text="Serious Donation - Not yet Implemented"
-                                           FontWeight="Bold"
-                                           Foreground="{DynamicResource PrimaryBrush}" />
-                                <TextBlock Text="Support the project with a serious donation is deferred because there are some issues with PayPal account. Thank you for understanding!"
-                                           TextWrapping="Wrap"
-                                           Foreground="{DynamicResource TextBrush}" />
-                            </StackPanel>
-                        </Button.ToolTip>
-                    </Button>
+                            ToolTip="Support the project with a symbolic donation is deferred because there are some issues with PayPal account. Thank you for understanding!" />
                 </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            </ScrollViewer>
+        </Border>
 
         <!-- Top Header -->
-        <DockPanel DockPanel.Dock="Top"
-                   Height="50"
-                   Background="{StaticResource SurfaceBrush}">
-            <TextBlock Text="Oblivion Control Center"
-                       FontSize="16"
-                       FontWeight="Bold"
-                       VerticalAlignment="Center"
-                       Margin="10"
-                       Foreground="{StaticResource PrimaryBrush}" />
-        </DockPanel>
+        <Border DockPanel.Dock="Top"
+                Height="60"
+                Background="{DynamicResource SurfaceGradientBrush}"
+                BorderBrush="{DynamicResource PrimaryBrush}"
+                BorderThickness="0,0,0,1">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <!-- Title -->
+                <TextBlock Text="OBLIVION CONTROL CENTER"
+                           Style="{DynamicResource HeaderTextStyle}"
+                           VerticalAlignment="Center" />
+                
+                <!-- Status Indicator -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <Ellipse Width="12" Height="12" Fill="{DynamicResource SuccessBrush}" Margin="0,0,8,0" />
+                    <TextBlock Text="SYSTEMS ONLINE" 
+                               Style="{DynamicResource BodyTextStyle}"
+                               Foreground="{DynamicResource SuccessBrush}"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+                
+                <!-- Current Time -->
+                <TextBlock Grid.Column="2"
+                           x:Name="TimeDisplay"
+                           Text="2025-01-27 12:00:00"
+                           Style="{DynamicResource MonospaceTextStyle}"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </Border>
 
         <!-- Copyright Footer -->
         <Border DockPanel.Dock="Bottom"
-                Background="{DynamicResource SurfaceBrush}"
-                Padding="8,4"
-                BorderThickness="1,0,0,0"
-                BorderBrush="{DynamicResource PrimaryBrush}">
-            <TextBlock Foreground="{DynamicResource TextBrush}"
-                       FontSize="12"
+                Background="{DynamicResource SurfaceGradientBrush}"
+                BorderBrush="{DynamicResource PrimaryBrush}"
+                BorderThickness="0,1,0,0"
+                Padding="20,8">
+            <TextBlock Foreground="{DynamicResource MediumTextBrush}"
+                       FontSize="11"
                        HorizontalAlignment="Center"
                        TextAlignment="Center">
                 © 2025 Adi Constantin  |
                 <Hyperlink NavigateUri="adrianconstantin.ro"
-                           RequestNavigate="Hyperlink_RequestNavigate">
+                           RequestNavigate="Hyperlink_RequestNavigate"
+                           Foreground="{DynamicResource PrimaryBrush}">
                     Website
                 </Hyperlink>  |  
                 <Hyperlink NavigateUri="https://linkedin.com/in/constantinadi"
-                           RequestNavigate="Hyperlink_RequestNavigate">
+                           RequestNavigate="Hyperlink_RequestNavigate"
+                           Foreground="{DynamicResource PrimaryBrush}">
                     LinkedIn
                 </Hyperlink>  |  
                 <Hyperlink NavigateUri="https://github.com/AdiConstantin/OblivionWPFTheme"
-                           RequestNavigate="Hyperlink_RequestNavigate">
-                    GitHub project
+                           RequestNavigate="Hyperlink_RequestNavigate"
+                           Foreground="{DynamicResource PrimaryBrush}">
+                    GitHub Project
                 </Hyperlink>
             </TextBlock>
         </Border>
 
         <!-- Main Content Area -->
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <TabControl Margin="20">
+            <!-- Dashboard Tab -->
+            <TabItem Header="🏠 DASHBOARD">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-            <!-- Quick Actions Row -->
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Left"
-                        Margin="0 0 0 20">
-                <Button Content="+ New Task"
-                        Width="120"
-                        Height="30" />
-                <Slider Width="200"
-                        Minimum="0"
-                        Maximum="100"
-                        Margin="10 0" />
-                <ProgressBar Width="150"
-                             Height="20"
-                             Value="70"
-                             Margin="10 0" />
-                <ProgressBar Width="150"
-                             Height="20"
-                             Value="70"
-                             Margin="10 0"
-                             IsIndeterminate="True" />
-            </StackPanel>
+                    <!-- Control Panel -->
+                    <GroupBox Grid.Row="0" Header="CONTROL PANEL" Margin="0,0,0,20">
+                        <Grid Margin="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Row 1 -->
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                <TextBlock Text="Power Level" Style="{DynamicResource CaptionTextStyle}" />
+                                <Slider Value="75" Minimum="0" Maximum="100" Margin="0,4" />
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="1" Margin="10,0">
+                                <TextBlock Text="System Status" Style="{DynamicResource CaptionTextStyle}" />
+                                <ComboBox ItemsSource="{StaticResource StatusOptions}" 
+                                          SelectedIndex="0" 
+                                          Margin="0,4" />
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="2" Margin="10,0">
+                                <TextBlock Text="Search Query" Style="{DynamicResource CaptionTextStyle}" />
+                                <TextBox Text="Enter command..." Margin="0,4" />
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="3" Margin="10,0,0,0">
+                                <TextBlock Text="Quick Actions" Style="{DynamicResource CaptionTextStyle}" />
+                                <Button Content="EXECUTE" Margin="0,4" />
+                            </StackPanel>
+                            
+                            <!-- Row 2 -->
+                            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,16,10,0">
+                                <TextBlock Text="Network Activity" Style="{DynamicResource CaptionTextStyle}" />
+                                <ProgressBar Value="45" Margin="0,4" />
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,16,10,0">
+                                <TextBlock Text="Memory Usage" Style="{DynamicResource CaptionTextStyle}" />
+                                <ProgressBar Value="82" Margin="0,4" />
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="1" Grid.Column="2" Margin="10,16,10,0">
+                                <TextBlock Text="Processing" Style="{DynamicResource CaptionTextStyle}" />
+                                <ProgressBar IsIndeterminate="True" Margin="0,4" />
+                            </StackPanel>
+                            
+                            <Button Grid.Row="1" Grid.Column="3" 
+                                    Content="SYSTEM SCAN"
+                                    Margin="10,16,0,0"
+                                    VerticalAlignment="Bottom" />
+                        </Grid>
+                    </GroupBox>
 
-            <!-- Dashboard Content -->
-            <TabControl Grid.Row="1">
-                <TabItem Header="Overview">
-                    <ListBox>
-                        <ListBoxItem Content="System Check: OK" />
-                        <ListBoxItem Content="Module Status: Active" />
-                        <ListBoxItem Content="Comms: Secure" />
-                    </ListBox>
-                </TabItem>
-                <TabItem Header="Details">
-                    <DataGrid x:Name="MyDataGrid"
+                    <!-- Metrics Row -->
+                    <UniformGrid Grid.Row="1" Columns="4" Margin="0,0,0,20">
+                        <Border Background="{DynamicResource SurfaceBrush}"
+                                BorderBrush="{DynamicResource AccentBrush}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Margin="0,0,10,0"
+                                Padding="16">
+                            <StackPanel>
+                                <TextBlock Text="🔋 POWER" 
+                                           Style="{DynamicResource SubHeaderTextStyle}"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="98.5%" 
+                                           Style="{DynamicResource GlowingTextStyle}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,8,0,0" />
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Background="{DynamicResource SurfaceBrush}"
+                                BorderBrush="{DynamicResource AccentBrush}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Margin="5,0"
+                                Padding="16">
+                            <StackPanel>
+                                <TextBlock Text="🌐 NETWORK" 
+                                           Style="{DynamicResource SubHeaderTextStyle}"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="STABLE" 
+                                           Style="{DynamicResource GlowingTextStyle}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,8,0,0" />
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Background="{DynamicResource SurfaceBrush}"
+                                BorderBrush="{DynamicResource AccentBrush}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Margin="5,0"
+                                Padding="16">
+                            <StackPanel>
+                                <TextBlock Text="🛡️ SECURITY" 
+                                           Style="{DynamicResource SubHeaderTextStyle}"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="SECURE" 
+                                           Style="{DynamicResource GlowingTextStyle}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,8,0,0" />
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Background="{DynamicResource SurfaceBrush}"
+                                BorderBrush="{DynamicResource AccentBrush}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Margin="10,0,0,0"
+                                Padding="16">
+                            <StackPanel>
+                                <TextBlock Text="⚡ STATUS" 
+                                           Style="{DynamicResource SubHeaderTextStyle}"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="ONLINE" 
+                                           Style="{DynamicResource GlowingTextStyle}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,8,0,0" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+
+                    <!-- System Overview -->
+                    <Border Grid.Row="2" 
+                            Background="{DynamicResource SurfaceBrush}"
+                            BorderBrush="{DynamicResource PrimaryBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- System Log -->
+                            <GroupBox Grid.Column="0" Header="SYSTEM LOG" Margin="16">
+                                <ListBox Height="300">
+                                    <ListBoxItem Content="[12:45:32] System initialization complete" />
+                                    <ListBoxItem Content="[12:45:28] Loading security protocols..." />
+                                    <ListBoxItem Content="[12:45:25] Network connection established" />
+                                    <ListBoxItem Content="[12:45:20] Power systems online" />
+                                    <ListBoxItem Content="[12:45:15] Boot sequence initiated" />
+                                    <ListBoxItem Content="[12:45:10] Hardware diagnostics passed" />
+                                    <ListBoxItem Content="[12:45:05] System startup..." IsSelected="True" />
+                                </ListBox>
+                            </GroupBox>
+                            
+                            <!-- Performance Metrics -->
+                            <GroupBox Grid.Column="1" Header="PERFORMANCE METRICS" Margin="16">
+                                <StackPanel>
+                                    <Border Background="{DynamicResource BackgroundBrush}"
+                                            BorderBrush="{DynamicResource PrimaryBrush}"
+                                            BorderThickness="1"
+                                            CornerRadius="4"
+                                            Padding="12"
+                                            Margin="0,0,0,8">
+                                        <TextBlock Style="{DynamicResource MonospaceTextStyle}"
+                                                   Background="Transparent">
+                                            <Run Text="CPU Usage: "/><Run Text="23.4%" Foreground="{DynamicResource SuccessBrush}"/>
+                                            <LineBreak/>
+                                            <Run Text="Memory:    "/><Run Text="4.2GB / 16GB" Foreground="{DynamicResource PrimaryBrush}"/>
+                                            <LineBreak/>
+                                            <Run Text="Disk I/O:  "/><Run Text="125 MB/s" Foreground="{DynamicResource AccentBrush}"/>
+                                            <LineBreak/>
+                                            <Run Text="Network:   "/><Run Text="↑ 2.3 MB/s ↓ 8.7 MB/s" Foreground="{DynamicResource WarningBrush}"/>
+                                            <LineBreak/>
+                                            <LineBreak/>
+                                            <Run Text="Uptime:    "/><Run Text="3d 14h 27m" Foreground="{DynamicResource TextBrush}"/>
+                                            <LineBreak/>
+                                            <Run Text="Last Boot: "/><Run Text="2025-01-24 09:32:15" Foreground="{DynamicResource MediumTextBrush}"/>
+                                        </TextBlock>
+                                    </Border>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,8">
+                                        <Button Content="REFRESH" Margin="0,0,8,0" />
+                                        <Button Content="DETAILS" Margin="0,0,8,0" />
+                                        <Button Content="EXPORT" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </GroupBox>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+            
+            <!-- Data Tab -->
+            <TabItem Header="📊 DATA ANALYSIS">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0"
+                               Text="PERSONNEL DATABASE"
+                               Style="{DynamicResource HeaderTextStyle}"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,20" />
+                    
+                    <DataGrid Grid.Row="1"
+                              x:Name="MyDataGrid"
                               AutoGenerateColumns="True"
-                              Margin="0"
-                              VerticalAlignment="Stretch"
-                              HorizontalAlignment="Stretch" />
-                </TabItem>
-            </TabControl>
-        </Grid>
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              IsReadOnly="True"
+                              AlternationCount="2" />
+                </Grid>
+            </TabItem>
+            
+            <!-- Settings Tab -->
+            <TabItem Header="⚙️ CONFIGURATION">
+                <ScrollViewer Margin="20">
+                    <StackPanel MaxWidth="600">
+                        <TextBlock Text="SYSTEM CONFIGURATION"
+                                   Style="{DynamicResource HeaderTextStyle}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,30" />
+                        
+                        <GroupBox Header="Display Settings" Margin="0,0,0,20">
+                            <StackPanel Margin="16">
+                                <CheckBox Content="Enable High Contrast Mode" Margin="0,4" />
+                                <CheckBox Content="Show System Notifications" IsChecked="True" Margin="0,4" />
+                                <CheckBox Content="Auto-hide Interface" Margin="0,4" />
+                                <CheckBox Content="Fullscreen Mode" Margin="0,4" />
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <GroupBox Header="Audio Settings" Margin="0,0,0,20">
+                            <StackPanel Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,4">
+                                    <TextBlock Text="Master Volume:" Width="120" VerticalAlignment="Center" />
+                                    <Slider Value="65" Minimum="0" Maximum="100" Width="200" />
+                                    <TextBlock Text="65%" Margin="8,0,0,0" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,4">
+                                    <TextBlock Text="Effects Volume:" Width="120" VerticalAlignment="Center" />
+                                    <Slider Value="80" Minimum="0" Maximum="100" Width="200" />
+                                    <TextBlock Text="80%" Margin="8,0,0,0" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <CheckBox Content="Enable Sound Effects" IsChecked="True" Margin="0,8,0,4" />
+                                <CheckBox Content="Mute on Minimize" Margin="0,4" />
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <GroupBox Header="Network Settings" Margin="0,0,0,20">
+                            <StackPanel Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,4">
+                                    <TextBlock Text="Connection Type:" Width="120" VerticalAlignment="Center" />
+                                    <ComboBox SelectedIndex="1" Width="200">
+                                        <ComboBoxItem Content="Automatic" />
+                                        <ComboBoxItem Content="High Speed" />
+                                        <ComboBoxItem Content="Secure Connection" />
+                                        <ComboBoxItem Content="Low Latency" />
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,4">
+                                    <TextBlock Text="Server Address:" Width="120" VerticalAlignment="Center" />
+                                    <TextBox Text="192.168.1.100" Width="200" />
+                                </StackPanel>
+                                <CheckBox Content="Auto-reconnect on failure" IsChecked="True" Margin="0,8,0,4" />
+                                <CheckBox Content="Use encrypted connections" IsChecked="True" Margin="0,4" />
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <GroupBox Header="Security Settings">
+                            <StackPanel Margin="16">
+                                <RadioButton Content="Security Level: Standard" IsChecked="True" GroupName="Security" Margin="0,4" />
+                                <RadioButton Content="Security Level: Enhanced" GroupName="Security" Margin="0,4" />
+                                <RadioButton Content="Security Level: Maximum" GroupName="Security" Margin="0,4" />
+                                
+                                <CheckBox Content="Enable two-factor authentication" IsChecked="True" Margin="0,12,0,4" />
+                                <CheckBox Content="Log security events" IsChecked="True" Margin="0,4" />
+                                <CheckBox Content="Auto-lock on idle" Margin="0,4" />
+                                
+                                <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                    <Button Content="CHANGE PASSWORD" Margin="0,0,8,0" />
+                                    <Button Content="SECURITY SCAN" />
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                            <Button Content="APPLY SETTINGS" Margin="0,0,16,0" />
+                            <Button Content="RESET TO DEFAULT" Margin="0,0,16,0" />
+                            <Button Content="EXPORT CONFIG" />
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
     </DockPanel>
 </Window>

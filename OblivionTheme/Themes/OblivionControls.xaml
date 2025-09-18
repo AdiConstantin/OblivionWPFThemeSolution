@@ -782,4 +782,70 @@
         </Setter>
     </Style>
 
+    <!-- GROUPBOX -->
+    <Style TargetType="GroupBox">
+        <Setter Property="FontFamily" Value="{DynamicResource SciFiFont}" />
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Header -->
+                        <Border Grid.Row="0"
+                                Background="{DynamicResource SurfaceLightBrush}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1,1,1,0"
+                                CornerRadius="6,6,0,0"
+                                Padding="12,6">
+                            <ContentPresenter ContentSource="Header"
+                                              RecognizesAccessKey="True">
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+                                        <Setter Property="FontFamily" Value="{DynamicResource SciFiFontBold}" />
+                                    </Style>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+                        </Border>
+                        
+                        <!-- Content -->
+                        <Border Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1,0,1,1"
+                                CornerRadius="0,0,6,6"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- HYPERLINK -->
+    <Style TargetType="Hyperlink">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+        <Setter Property="TextDecorations" Value="None" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource AccentBrush}" />
+                <Setter Property="TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>
