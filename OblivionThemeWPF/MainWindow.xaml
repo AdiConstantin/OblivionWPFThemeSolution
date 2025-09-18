@@ -141,7 +141,7 @@
                        HorizontalAlignment="Center"
                        TextAlignment="Center">
                 © 2025 Adi Constantin  |
-                <Hyperlink NavigateUri="https://adrianconstantin.ro"
+                <Hyperlink NavigateUri="https://adrianconstantin.ro/"
                            RequestNavigate="Hyperlink_RequestNavigate"
                            Foreground="{DynamicResource PrimaryBrush}">
                     Website

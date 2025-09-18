@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <!-- Font Families with Fallbacks -->
-    <FontFamily x:Key="SciFiFont">Orbitron, Segoe UI, Arial, sans-serif</FontFamily>
-    <FontFamily x:Key="SciFiFontBold">Orbitron Bold, Segoe UI Semibold, Arial Black, sans-serif</FontFamily>
-    <FontFamily x:Key="SciFiFontLight">Orbitron Light, Segoe UI Light, Arial, sans-serif</FontFamily>
+    <FontFamily x:Key="SciFiFont">pack://application:,,,/OblivionTheme;component/Fonts/Orbitron-Regular.ttf#Orbitron</FontFamily>
+    <FontFamily x:Key="SciFiFontBold">pack://application:,,,/OblivionTheme;component/Fonts/Orbitron-Bold.ttf#Orbitron</FontFamily>
+    <FontFamily x:Key="SciFiFontLight">pack://application:,,,/OblivionTheme;component/Fonts/Orbitron-Light.ttf#Orbitron</FontFamily>
     
     <!-- Fallback if custom fonts are not available -->
     <FontFamily x:Key="PrimaryFont">Segoe UI, Calibri, Arial, sans-serif</FontFamily>

@@ -13,6 +13,7 @@
     
     <!-- Background Colors -->
     <Color x:Key="DarkBackground">#0A0E1A</Color>
+    <SolidColorBrush x:Key="DarkBackgroundBrush" Color="{DynamicResource DarkBackground}" />
     <Color x:Key="SurfaceDark">#1A2332</Color>
     <Color x:Key="SurfaceLight">#2D3748</Color>
     <Color x:Key="SurfaceHover">#3A4A5C</Color>
@@ -70,7 +71,13 @@
         <GradientStop Color="{DynamicResource SurfaceLight}" Offset="0" />
         <GradientStop Color="{DynamicResource SurfaceDark}" Offset="1" />
     </LinearGradientBrush>
-    
+
+    <DropShadowEffect x:Key="GlowEffect"
+                  Color="{DynamicResource AccentColor}"
+                  BlurRadius="12"
+                  ShadowDepth="0"
+                  Opacity="0.8" />
+
     <RadialGradientBrush x:Key="GlowRadialBrush" Center="0.5,0.5" RadiusX="1" RadiusY="1">
         <GradientStop Color="#3300D4FF" Offset="0" />
         <GradientStop Color="#1100D4FF" Offset="0.7" />

@@ -56,7 +56,7 @@
                                                          Duration="0:0:0.2" />
                                         <ColorAnimation Storyboard.TargetName="BorderElement"
                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                        To="{DynamicResource PrimaryLightColor}"
+                                                        To="#33DDFF"
                                                         Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -70,7 +70,7 @@
                                                          Duration="0:0:0.2" />
                                         <ColorAnimation Storyboard.TargetName="BorderElement"
                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                        To="{DynamicResource PrimaryColor}"
+                                                        To="#00D4FF"
                                                         Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -78,7 +78,7 @@
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="BorderElement" Property="Background" Value="{DynamicResource PrimaryBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource DarkBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DarkBackgroundBrush}" />
                             <Setter TargetName="HighlightRect" Property="Opacity" Value="0.3" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
@@ -190,6 +190,7 @@
                                     BorderBrush="{DynamicResource PrimaryBrush}"
                                     BorderThickness="1"
                                     CornerRadius="4"
+                                    Effect="{DynamicResource GlowEffect}"
                                     MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                     MaxHeight="200">
                                 <Border.Effect>
@@ -232,7 +233,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="True">
                             <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource DarkBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DarkBackgroundBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -380,7 +381,7 @@
                     <Style.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource DarkBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DarkBackgroundBrush}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -475,14 +476,8 @@
                                                     BorderThickness="2"
                                                     CornerRadius="12"
                                                     Width="24"
-                                                    Height="24">
-                                                <Border.Effect>
-                                                    <DropShadowEffect Color="{DynamicResource AccentColor}" 
-                                                                      BlurRadius="6" 
-                                                                      ShadowDepth="0" 
-                                                                      Opacity="0.6" />
-                                                </Border.Effect>
-                                            </Border>
+                                                    Height="24"
+                                                    Effect="{DynamicResource GlowEffect}" />
                                         </ControlTemplate>
                                     </Thumb.Template>
                                 </Thumb>
@@ -695,7 +690,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="ItemBorder" Property="Background" Value="{DynamicResource AccentBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource DarkBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DarkBackgroundBrush}" />
                             <Setter TargetName="ItemBorder" Property="Effect">
                                 <Setter.Value>
                                     <DropShadowEffect Color="{DynamicResource AccentColor}" 
