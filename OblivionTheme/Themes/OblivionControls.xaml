@@ -193,6 +193,12 @@
                                     Effect="{DynamicResource GlowEffect}"
                                     MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                     MaxHeight="200">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="{DynamicResource PrimaryColor}" 
+                                                      BlurRadius="8" 
+                                                      ShadowDepth="0" 
+                                                      Opacity="0.6" />
+                                </Border.Effect>
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <ItemsPresenter />
                                 </ScrollViewer>
