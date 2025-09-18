@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace OblivionDashboardDemo.Converters
+namespace OblivionThemeWPF.Converters
 {
     public class StringNullOrEmptyToVisibilityConverter : IValueConverter
     {

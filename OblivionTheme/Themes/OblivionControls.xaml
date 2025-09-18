@@ -190,9 +190,14 @@
                                     BorderBrush="{DynamicResource PrimaryBrush}"
                                     BorderThickness="1"
                                     CornerRadius="4"
-                                    Effect="{StaticResource GlowRadialBrush}"
                                     MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                     MaxHeight="200">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="{DynamicResource PrimaryColor}" 
+                                                      BlurRadius="8" 
+                                                      ShadowDepth="0" 
+                                                      Opacity="0.6" />
+                                </Border.Effect>
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <ItemsPresenter />
                                 </ScrollViewer>
@@ -470,8 +475,14 @@
                                                     BorderThickness="2"
                                                     CornerRadius="12"
                                                     Width="24"
-                                                    Height="24"
-                                                    Effect="{StaticResource GlowRadialBrush}" />
+                                                    Height="24">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="{DynamicResource AccentColor}" 
+                                                                      BlurRadius="6" 
+                                                                      ShadowDepth="0" 
+                                                                      Opacity="0.6" />
+                                                </Border.Effect>
+                                            </Border>
                                         </ControlTemplate>
                                     </Thumb.Template>
                                 </Thumb>
