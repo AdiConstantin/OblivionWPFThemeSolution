@@ -1,0 +1,37 @@
+name: Release WPF Demo
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore ".\OblivionThemeWPF\OblivionThemeWPF.csproj"
+
+      - name: Publish (self-contained single-file)
+        run: >
+          dotnet publish ".\OblivionThemeWPF\OblivionThemeWPF.csproj"
+          -c Release
+          -o ".\publish\win-x64"
+
+      - name: Archive
+        run: >
+          Compress-Archive -Path ".\publish\win-x64\*"
+          -DestinationPath ".\OblivionWPFTheme-demo-win-x64.zip" -Force
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: OblivionWPFTheme-demo-win-x64.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
